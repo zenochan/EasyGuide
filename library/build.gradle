@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: 'http://maven.mjtown.cn/maven.gradle'
+mavenConf {
+  projectName "Easy Guide"
+  projectDesc "功能使用引导"
+  projectUrl "https://github.com/zenochan/android/"
+
+  groupId "name.zeno"
+  artifactId "EasyGuide"
+  version "0.0.1"
+
+//  repositoryUrl "file:///Users/zenochan/.m2/repository"
+  repositoryUrl "scp://root@mjtown.cn/root/nginx/maven"
+}
+confMaven()
+
+android {
+  compileSdkVersion 26
+  buildToolsVersion "26.0.1"
+  resourcePrefix "easyguideview"
+
+  defaultConfig {
+    minSdkVersion 15
+    targetSdkVersion 26
+    versionCode 7
+    versionName "1.2.2"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile 'com.android.support:appcompat-v7:26.0.2'
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+  mavenCentral()
+}
